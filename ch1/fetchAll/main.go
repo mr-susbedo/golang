@@ -11,6 +11,14 @@ import (
 )
 
 func main() {
+	for i := 0; i < 2; i++ {
+		fetchAndReport()
+		fmt.Println("Run completed: ", i+1)
+	}
+
+}
+
+func fetchAndReport() {
 	start := time.Now()
 	ch := make(chan string)
 
@@ -23,7 +31,6 @@ func main() {
 	}
 
 	fmt.Printf("%.2fs elapsed\n", time.Since(start).Seconds())
-
 }
 
 func fetch(url string, ch chan<- string) {
@@ -36,6 +43,13 @@ func fetch(url string, ch chan<- string) {
 	}
 
 	nbytes, err := io.Copy(io.Discard, resp.Body)
+	// Print cache-related headers
+	fmt.Println("URL:", url)
+	fmt.Println("Cache-Control:", resp.Header.Get("Cache-Control"))
+	fmt.Println("ETag:", resp.Header.Get("ETag"))
+	fmt.Println("Last-Modified:", resp.Header.Get("Last-Modified"))
+	fmt.Println()
+
 	resp.Body.Close() // don't leak resources (O_O)
 
 	if err != nil {
