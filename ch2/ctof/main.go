@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+	"strings"
 
 	"github.com/mr-susbedo/golang/ch2/tempconv"
-	"github.com/mr-susbedo/golang/utils"
 )
 
 func main() {
@@ -25,6 +25,6 @@ func main() {
 		fmt.Printf("[Celcius]\n\t%s == %s\n\t%s == %s\n", c, tempconv.CToF(c), c, tempconv.CToK(c))
 		fmt.Printf("[Fahrenheit]\n\t%s == %s\n\t%s == %s\n", f, tempconv.FToC(f), f, tempconv.FToK(f))
 		fmt.Printf("[Kelvin]\n\t%s == %s\n\t%s == %s\n", k, tempconv.KToF(k), k, tempconv.KToC(k))
-		fmt.Println(utils.PrintChar('-', 36))
+		fmt.Println(strings.Repeat("-", 36))
 	}
 }
