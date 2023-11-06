@@ -16,3 +16,11 @@ func EnsurePrefix(s string, prefix Protocols) string {
 	}
 	return s
 }
+
+func PrintChar(c rune, len uint8) string {
+	var str string
+	for i := 0; i < int(len); i++ {
+		str += string(c)
+	}
+	return str
+}
