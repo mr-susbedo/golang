@@ -6,6 +6,7 @@ import "fmt"
 
 type Celcius float64
 type Fahrenheit float64
+type Kelvin float64
 
 const (
 	AbsoluteZeroC Celcius = -273.15
@@ -13,9 +14,9 @@ const (
 	BoilingC      Celcius = 100
 )
 
-func CToF(c Celcius) Fahrenheit { return Fahrenheit(c*9/5 + 32) }
-
-func FToC(f Fahrenheit) Celcius { return Celcius((f - 32) * 5 / 9) }
-
 // associates a type method with Celcius type declaration
 func (c Celcius) String() string { return fmt.Sprintf("%g°C", c) }
+
+func (f Fahrenheit) String() string { return fmt.Sprintf("%g°F", f) }
+
+func (k Kelvin) String() string { return fmt.Sprintf("%gK", k) }
